@@ -9,6 +9,9 @@ import lombok.NoArgsConstructor;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.time.LocalDateTime;
+import java.util.Calendar;
+import java.util.Date;
 
 @Data
 @Builder
@@ -21,6 +24,8 @@ public class CoordenadaDTO {
     @NotNull
     @Size(max = 200)
     private String coordenada;
+
+    private String data_coordenada;
 
     @Valid
     @NotNull
