@@ -25,7 +25,7 @@ public class Coordenada {
     @Column(nullable = false)
     private String coordenada;
 
-    //@JsonFormat(pattern = "yyyy-MM-dd-HH:mm:ss:zz")
+    //@JsonFormat(pattern = "yyyy-MM-dd-HH:mm:ss:zz")...
     //@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     @Column(name = "data_coordenada")
     private String data_coordenada;
