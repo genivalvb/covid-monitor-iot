@@ -1,0 +1,14 @@
+Host
+ec2-52-0-114-209.compute-1.amazonaws.com
+Database
+ddk1jrnouegftn
+User
+arogjorhkktfiw
+Port
+5432
+Password
+c80fd81166b4be5f14c2300c37438d14351dac5d990bd339ae8052fa8c578de4
+URI
+postgres://arogjorhkktfiw:c80fd81166b4be5f14c2300c37438d14351dac5d990bd339ae8052fa8c578de4@ec2-52-0-114-209.compute-1.amazonaws.com:5432/ddk1jrnouegftn
+Heroku CLI
+heroku pg:psql postgresql-solid-16465 --app covid-monitor-iot
