@@ -1,8 +1,14 @@
 package com.covidmonitoriot.service;
 
+import com.covidmonitoriot.dto.CoordenadaDTO;
 import com.covidmonitoriot.dto.MessageResponseDTO;
 import com.covidmonitoriot.entity.Coordenada;
+import com.covidmonitoriot.entity.Vacina;
+import com.covidmonitoriot.exception.CoordenadaNotFoundException;
+import com.covidmonitoriot.exception.VacinaNotFoundException;
+import com.covidmonitoriot.mapper.CoordenadaMapper;
 import com.covidmonitoriot.repository.CoordenadaRepository;
+import com.covidmonitoriot.repository.VacinaRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,10 +22,31 @@ public class CoordenadaService {
     @Autowired
     private CoordenadaRepository coordenadaRepository;
 
-    public MessageResponseDTO create(Coordenada coordenada){
-        Coordenada saveCoordenada = coordenadaRepository.save(coordenada);
+    @Autowired
+    private VacinaRepository vacinaRepository;
+
+    private final CoordenadaMapper coordenadaMapper = CoordenadaMapper.INSTANCE;
+
+    public MessageResponseDTO create(CoordenadaDTO coordenadaDTO){
+        Coordenada coordenadaToSave = coordenadaMapper.toModel(coordenadaDTO);
+        Coordenada savedCoordenada = coordenadaRepository.save(coordenadaToSave);
         return MessageResponseDTO.builder()
-                .message("Coordenada criada com ID " + coordenada.getId())
+                .message("Coordenada criada com ID " + savedCoordenada.getId())
                 .build();
     }
+
+    public CoordenadaDTO findById(Long id) throws CoordenadaNotFoundException {
+        Coordenada coordenadaEncontrada = coordenadaRepository.findById(id)
+                .orElseThrow(() -> new CoordenadaNotFoundException(id));
+        return coordenadaMapper.toDTO(coordenadaEncontrada);
+    }
+
+   /* public CoordenadaDTO findByVacinaCode(String code) throws CoordenadaNotFoundException, VacinaNotFoundException {
+        Vacina vacinaEncontrada = vacinaRepository.findByCode(code)
+                .orElseThrow(() -> new VacinaNotFoundException(code));
+
+        Coordenada coordenadaEncontrada = coordenadaRepository.find
+                .orElseThrow(() -> new CoordenadaNotFoundException(id));
+        return coordenadaMapper.toDTO(coordenadaEncontrada);
+    }*/
 }
