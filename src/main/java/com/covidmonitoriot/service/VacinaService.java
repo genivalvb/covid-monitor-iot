@@ -29,7 +29,6 @@ public class VacinaService {
     private final VacinaMapper vacinaMapper = VacinaMapper.INSTANCE;
 
     public MessageResponseDTO create(VacinaDTO vacinaDTO){
-        vacinaDTO.setData_envio(LocalDate.now());
         Vacina vacinaToSave = vacinaMapper.toModel(vacinaDTO);
         Vacina savedVacina = vacinaRepository.save(vacinaToSave);
         return MessageResponseDTO.builder()
