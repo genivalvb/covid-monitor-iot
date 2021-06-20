@@ -1,4 +1,4 @@
-package com.covidmonitoriot.covidmonitoriot;
+package com.covidmonitoriot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package com.covidmonitoriot.covidmonitoriot.entity;
+package com.covidmonitoriot.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,15 +12,17 @@ import javax.persistence.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Vacina {
+public class Coordenada {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
-    private String code;
-
     @Column(nullable = false)
-    private String data_envio;
+    private String coordenada;
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REMOVE})
+    @JoinColumn(name = "vacina_id")
+    private Vacina vacina;
+
 }
