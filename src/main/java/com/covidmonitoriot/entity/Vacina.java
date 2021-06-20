@@ -29,7 +29,7 @@ public class Vacina {
 
     //@JsonFormat(pattern = "yyyy-MM-dd")
     //@DateTimeFormat(pattern = "dd/MM/yyyy")
-    private LocalDate data_envio;
+    private String data_envio;
 
     @Type(type = "jsonb")
     @Basic(fetch = FetchType.LAZY)

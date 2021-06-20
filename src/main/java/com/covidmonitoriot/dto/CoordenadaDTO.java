@@ -25,6 +25,7 @@ public class CoordenadaDTO {
     @Size(max = 200)
     private String coordenada;
 
+    @NotNull
     private String data_coordenada;
 
     @Valid

@@ -28,7 +28,8 @@ public class VacinaDTO {
     @Size(max = 20)
     private String code;
 
-    private LocalDate data_envio = LocalDate.now();
+    @NotNull
+    private String data_envio;
 
     private List<Coordenada> coordenadas;
 }
