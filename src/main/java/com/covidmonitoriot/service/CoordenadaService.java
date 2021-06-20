@@ -15,6 +15,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @AllArgsConstructor
 public class CoordenadaService {
@@ -39,6 +42,13 @@ public class CoordenadaService {
         Coordenada coordenadaEncontrada = coordenadaRepository.findById(id)
                 .orElseThrow(() -> new CoordenadaNotFoundException(id));
         return coordenadaMapper.toDTO(coordenadaEncontrada);
+    }
+
+    public List<CoordenadaDTO> listAll(){
+        return coordenadaRepository.findAll()
+                .stream()
+                .map(coordenadaMapper::toDTO)
+                .collect(Collectors.toList());
     }
 
    /* public CoordenadaDTO findByVacinaCode(String code) throws CoordenadaNotFoundException, VacinaNotFoundException {
