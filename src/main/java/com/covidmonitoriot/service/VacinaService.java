@@ -15,6 +15,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,6 +29,7 @@ public class VacinaService {
     private final VacinaMapper vacinaMapper = VacinaMapper.INSTANCE;
 
     public MessageResponseDTO create(VacinaDTO vacinaDTO){
+        vacinaDTO.setData_envio(LocalDate.now());
         Vacina vacinaToSave = vacinaMapper.toModel(vacinaDTO);
         Vacina savedVacina = vacinaRepository.save(vacinaToSave);
         return MessageResponseDTO.builder()

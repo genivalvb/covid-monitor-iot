@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.tomcat.jni.Local;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -27,9 +28,7 @@ public class VacinaDTO {
     @Size(max = 20)
     private String code;
 
-    @NotNull
-    @Size(max = 20)
-    private String data_envio;
+    private LocalDate data_envio = LocalDate.now();
 
     private List<Coordenada> coordenadas;
 }
